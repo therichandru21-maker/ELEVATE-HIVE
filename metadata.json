@@ -1,0 +1,6 @@
+{
+  "name": "Elevate Hive",
+  "description": "One Platform. Every College Innovation. Premium AI platform for student developers, hackathons, team building, project tracking, and campus innovation hubs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
