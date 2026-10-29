@@ -11,10 +11,8 @@ export const Footer: React.FC = () => {
           {/* Brand & Newsletter Column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 p-[1px]">
-                <div className="w-full h-full bg-[#07090E] rounded-[7px] flex items-center justify-center">
-                  <Cpu className="w-4 h-4 text-cyan-400" />
-                </div>
+              <div className="w-8 h-8 rounded-lg bg-slate-900 border border-indigo-500/30 flex items-center justify-center p-0.5">
+                <img src="/logo.png" alt="Elevate Hive" className="w-6 h-6 object-contain" />
               </div>
               <span className="font-display font-bold text-lg text-white">Elevate Hive</span>
             </div>

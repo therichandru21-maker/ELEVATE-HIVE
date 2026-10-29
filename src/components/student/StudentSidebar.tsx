@@ -80,10 +80,8 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
       <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
         {!collapsed && (
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-600 to-indigo-600 p-[1px] shadow-lg shadow-cyan-500/20">
-              <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-cyan-400" />
-              </div>
+            <div className="w-8 h-8 rounded-xl bg-slate-900 border border-cyan-500/30 flex items-center justify-center p-0.5 shadow-lg shadow-cyan-500/20">
+              <img src="/logo.png" alt="Elevate Hive" className="w-7 h-7 object-contain" />
             </div>
             <div>
               <span className="font-display font-extrabold text-sm text-white tracking-tight">Student Portal</span>

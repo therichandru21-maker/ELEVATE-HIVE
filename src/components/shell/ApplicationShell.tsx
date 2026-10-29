@@ -160,19 +160,19 @@ export const ApplicationShell: React.FC<ApplicationShellProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-[#07090E] text-slate-100 flex font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className="flex h-screen w-full bg-[#030508] text-slate-100 overflow-hidden font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
       
       {/* LEFT SIDEBAR (Desktop) */}
       <aside
-        className={`hidden md:flex flex-col bg-[#0B0F17]/95 backdrop-blur-2xl border-r border-slate-800/80 transition-all duration-300 z-30 sticky top-0 h-screen ${
+        className={`hidden md:flex flex-col bg-[#07090E]/95 backdrop-blur-2xl border-r border-slate-800/80 transition-all duration-300 z-30 h-full ${
           sidebarCollapsed ? 'w-20' : 'w-72'
         }`}
       >
         {/* Brand Header */}
         <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-indigo-600 to-violet-600 flex items-center justify-center text-white flex-shrink-0 shadow-lg shadow-indigo-900/30 border border-indigo-400/20">
-              <Cpu className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-indigo-500/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-indigo-900/30 p-1">
+              <img src="/logo.png" alt="Elevate Hive" className="w-8 h-8 object-contain filter drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
             </div>
             {!sidebarCollapsed && (
               <div className="flex flex-col min-w-0">
@@ -270,12 +270,12 @@ export const ApplicationShell: React.FC<ApplicationShellProps> = ({
         </div>
 
         {/* User Account & Bottom Actions */}
-        <div className="p-3 border-t border-slate-800/80 bg-[#0B0F17]">
-          <div className={`p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3 ${sidebarCollapsed ? 'justify-center' : ''}`}>
+        <div className="p-3 border-t border-slate-800/80 bg-[#07090E]">
+          <div className={`p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-3 ${sidebarCollapsed ? 'justify-center' : ''}`}>
             <img
               src={currentUser.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'}
               alt={currentUser.name}
-              className="w-8 h-8 rounded-lg object-cover border border-slate-700"
+              className="w-8 h-8 rounded-lg object-cover border border-slate-700 flex-shrink-0"
             />
             {!sidebarCollapsed && (
               <div className="flex-1 min-w-0">
@@ -283,31 +283,39 @@ export const ApplicationShell: React.FC<ApplicationShellProps> = ({
                 <p className="text-[10px] text-slate-400 truncate">{currentUser.institution || 'Elevate Hive'}</p>
               </div>
             )}
-          </div>
-
-          {!sidebarCollapsed && (
-            <div className="mt-2 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800">
-              <button
-                onClick={onExitToLanding}
-                className="hover:text-indigo-400 flex items-center gap-1 transition-colors text-[11px]"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Public Site</span>
-              </button>
+            {!sidebarCollapsed && (
               <button
                 onClick={onLogout}
-                className="hover:text-rose-400 flex items-center gap-1 transition-colors text-[11px]"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+                title="Sign Out"
               >
-                <LogOut className="w-3.5 h-3.5" />
-                <span>Sign Out</span>
+                <LogOut className="w-4 h-4" />
               </button>
-            </div>
+            )}
+          </div>
+
+          {!sidebarCollapsed ? (
+            <button
+              onClick={onLogout}
+              className="w-full mt-2 py-2 px-3 rounded-xl bg-slate-900/60 hover:bg-rose-950/30 border border-slate-800 hover:border-rose-500/30 text-slate-400 hover:text-rose-300 text-xs font-medium transition-all flex items-center justify-center gap-2 group"
+            >
+              <LogOut className="w-3.5 h-3.5 text-slate-400 group-hover:text-rose-400 transition-colors" />
+              <span>Sign Out of Elevate Hive</span>
+            </button>
+          ) : (
+            <button
+              onClick={onLogout}
+              className="w-full mt-2 p-2 rounded-xl bg-slate-900 hover:bg-rose-950/30 border border-slate-800 text-slate-400 hover:text-rose-400 flex items-center justify-center"
+              title="Sign Out"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           )}
         </div>
       </aside>
 
       {/* MAIN CONTAINER */}
-      <div className="flex-1 flex flex-col min-w-0 bg-[#07090E]">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden bg-[#07090E]">
         
         {/* TOP NAVIGATION BAR */}
         <header className="sticky top-0 z-20 bg-[#07090E]/90 backdrop-blur-xl border-b border-slate-800/80 px-4 sm:px-6 py-3 flex items-center justify-between shadow-xs">
@@ -502,13 +510,14 @@ export const ApplicationShell: React.FC<ApplicationShellProps> = ({
               <HelpCircle className="w-4 h-4" />
             </button>
 
-            {/* Return to Public Site */}
+            {/* Top Bar Quick Sign Out */}
             <button
-              onClick={onExitToLanding}
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors"
+              onClick={onLogout}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/40 transition-colors"
+              title="Sign Out of Elevate Hive"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Public Portal</span>
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Sign Out</span>
             </button>
 
           </div>
@@ -550,7 +559,7 @@ export const ApplicationShell: React.FC<ApplicationShellProps> = ({
         )}
 
         {/* MAIN WORKSPACE CONTENT */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6 bg-[#07090E]">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 custom-scrollbar">
           {children}
         </main>
       </div>

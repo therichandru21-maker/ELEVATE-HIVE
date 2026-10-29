@@ -196,27 +196,16 @@ export const StudentNavbar: React.FC<StudentNavbarProps> = ({
                 </div>
               )}
 
-              <div className="pt-1 border-t border-slate-800 space-y-1">
-                {onExitToLanding && (
-                  <button
-                    onClick={() => {
-                      setProfileDropdownOpen(false);
-                      onExitToLanding();
-                    }}
-                    className="w-full px-3 py-1.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-900 flex items-center gap-2"
-                  >
-                    <span>← Public Landing Portal</span>
-                  </button>
-                )}
+              <div className="pt-1.5 border-t border-slate-800">
                 <button
                   onClick={() => {
                     setProfileDropdownOpen(false);
                     onLogout();
                   }}
-                  className="w-full px-3 py-2 rounded-xl text-left text-xs font-semibold text-rose-300 hover:bg-rose-500/15 flex items-center gap-2"
+                  className="w-full px-3 py-2 rounded-xl text-left text-xs font-semibold text-rose-300 hover:bg-rose-500/15 flex items-center gap-2 group transition-colors"
                 >
-                  <LogOut className="w-4 h-4 text-rose-400" />
-                  <span>Log Out</span>
+                  <LogOut className="w-4 h-4 text-rose-400 group-hover:scale-110 transition-transform" />
+                  <span>Log Out of Elevate Hive</span>
                 </button>
               </div>
             </div>

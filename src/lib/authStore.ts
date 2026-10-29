@@ -201,4 +201,6 @@ export function setCurrentUser(user: UserProfile | null) {
 
 export function logoutUser() {
   localStorage.removeItem(CURRENT_USER_KEY);
+  localStorage.removeItem('devverse_ai_current_user');
+  sessionStorage.removeItem(CURRENT_USER_KEY);
 }
